@@ -1,0 +1,16 @@
+[package]
+edition = "2021"
+name = "helium-blockchain-http"
+version = "0.1.0"
+
+# See more keys and their definitions at https://doc.rust-lang.org/cargo/reference/manifest.html
+
+[dependencies]
+axum = "0.3"
+dotenv = "0.15.0"
+serde = {version = "1.0", features = ["derive"]}
+serde_json = "1.0"
+sqlx = {versoion = "0.5", features = ["runtime-tokio-rustls", "postgres"]}
+tokio = {version = "1.13", features = ["full"]}
+tracing = "0.1"
+tracing-subscriber = {version = "0.3", features = ["env-filter"]}
