@@ -1,4 +1,3 @@
-use axum;
 use dotenv::dotenv;
 use sqlx::postgres::PgPoolOptions;
 
