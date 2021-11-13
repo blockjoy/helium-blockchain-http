@@ -2,6 +2,7 @@ use dotenv::dotenv;
 use sqlx::postgres::PgPoolOptions;
 
 mod handlers;
+mod models;
 mod routes;
 
 #[tokio::main]

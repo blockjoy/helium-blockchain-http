@@ -1,23 +1,11 @@
+use crate::models::{Data, ParamsTimeRange};
 use axum::{
     extract::{Extension, Query},
     http::StatusCode,
     Json,
 };
 use axum_debug::debug_handler;
-use serde::{Deserialize, Serialize};
 use sqlx::postgres::PgPool;
-
-#[derive(Serialize, Deserialize, Debug)]
-pub struct ParamsTimeRange {
-    pub max_time: Option<String>,
-    pub min_time: Option<String>,
-}
-
-#[derive(Clone, Serialize, Deserialize, Debug)]
-pub struct Data<T> {
-    pub data: T,
-    pub cursor: Option<String>,
-}
 
 /// Gets the current height of the blockchainn.
 ///
