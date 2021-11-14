@@ -18,7 +18,7 @@ pub async fn get_block_height(
     Query(_time_range): Query<ParamsTimeRange>,
 ) -> Result<Json<Data<i64>>, (StatusCode, String)> {
     //TODO: Add support for `max_time` query
-    let row: (i64,) = sqlx::query_as("SELECT height FROM blocks ORDER BY hight DESC LIMIT 1")
+    let row: (i64,) = sqlx::query_as("SELECT height FROM blocks ORDER BY height DESC LIMIT 1")
         .fetch_one(&pool)
         .await
         .map_err(internal_error)?;
