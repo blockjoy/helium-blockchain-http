@@ -15,6 +15,8 @@ async fn main() {
     }
     tracing_subscriber::fmt::init();
 
+    let bind_addr = std::env::var("BIND_ADDR").unwrap_or_else(|_| "0.0.0.0:3000".to_string());
+
     let db_url = std::env::var("DATABASE_URL").expect("DATABASE_URL should be defined.");
 
     let db_max_connections: u32 = std::env::var("DATABASE_MAX_CONNECTIONS")
@@ -56,7 +58,7 @@ async fn main() {
         .expect("Should be able to connect to database.");
 
     // run it with hyper on localhost:3000
-    axum::Server::bind(&"0.0.0.0:3000".parse().unwrap())
+    axum::Server::bind(&bind_addr.parse().unwrap())
         .serve(routes::app(pool).into_make_service())
         .await
         .unwrap();
