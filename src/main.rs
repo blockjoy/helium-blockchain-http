@@ -18,7 +18,7 @@ async fn main() {
     let bind_addr = std::env::var("BIND_ADDR").unwrap_or_else(|_| "0.0.0.0:3000".to_string());
     let pool = init_pool().await;
 
-    // run it with hyper on localhost:3000
+    // Start Server
     axum::Server::bind(&bind_addr.parse().unwrap())
         .serve(routes::app(pool).into_make_service())
         .await
